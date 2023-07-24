@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const dotenv = require('dotenv'); // Import dotenv
+const dotenv = require('dotenv');
 const app = express();
 
 // Load environment variables from .env file
@@ -20,8 +20,11 @@ app.get('/chatbot/api', async (req, res) => {
     // Make the API request using Axios
     const response = await axios.get(apiLink);
 
-    // Send the API response back to the user
-    res.json(response.data);
+    // Get the API response data
+    const responseData = response.data;
+
+    // Send the API response data back to the user
+    res.json(responseData);
   } catch (error) {
     // Handle errors, if any
     res.status(500).json({ error: 'An error occurred while fetching the data.' });

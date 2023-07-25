@@ -1,10 +1,16 @@
 const express = require('express');
 const axios = require('axios');
 const dotenv = require('dotenv');
+const cors = require('cors'); // Add the cors module
 const app = express();
 
 // Load environment variables from .env file
 dotenv.config();
+
+// Add the CORS middleware to allow all origins
+app.use(cors({
+  origin: "*",
+}));
 
 // Define the route to handle the API request
 app.get('/chatbot/api', async (req, res) => {
